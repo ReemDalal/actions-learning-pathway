@@ -35,7 +35,7 @@ jobs:
       id-token: write
     environment:
       name: production
-      url: ${{ steps.deployment.outputs,page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
@@ -50,7 +50,7 @@ jobs:
         with:
           static_site_generator: next
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - name: upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
